@@ -1,7 +1,7 @@
 const cells = document.querySelectorAll('.cell');
+const restartButton = document.querySelector('.restart-btn'); // Declare restartButton
 let isGameActive = true; 
 let isXNext = true; 
-
 
 const winningCombinations = [
     [0, 1, 2], 
@@ -14,11 +14,9 @@ const winningCombinations = [
     [2, 4, 6],
 ];
 
-
-cells.forEach((cell, index) => {
+cells.forEach((cell) => {
     cell.addEventListener('click', () => {
         if (isGameActive && !cell.classList.contains('taken')) {
-            
             cell.textContent = 'X';
             cell.classList.add('taken', 'X');
             checkWinner('X'); 
@@ -29,6 +27,17 @@ cells.forEach((cell, index) => {
     });
 });
 
+restartButton.addEventListener('click', restartGame);
+
+function restartGame() {
+    cells.forEach((cell) => {
+        cell.textContent = '';
+        cell.classList.remove('taken', 'X', 'O');
+        cell.style.backgroundColor = ''; // Reset background color
+    });
+    isXNext = true;
+    isGameActive = true;
+}
 
 function checkWinner(player) {
     const playerCells = Array.from(cells).filter((cell) => cell.classList.contains(player));
@@ -43,13 +52,11 @@ function checkWinner(player) {
         }
     }
 
-    
     if (Array.from(cells).every((cell) => cell.classList.contains('taken'))) {
         isGameActive = false;
         alert("It's a draw!");
     }
 }
-
 
 function highlightWinningCells(combination) {
     combination.forEach((index) => {
@@ -57,14 +64,12 @@ function highlightWinningCells(combination) {
     });
 }
 
-
 function computerMove() {
     if (!isGameActive) return;
 
     const availableCells = Array.from(cells).filter((cell) => !cell.classList.contains('taken'));
     if (availableCells.length === 0) return;
 
-    
     const randomCell = availableCells[Math.floor(Math.random() * availableCells.length)];
     randomCell.textContent = 'O';
     randomCell.classList.add('taken', 'O');

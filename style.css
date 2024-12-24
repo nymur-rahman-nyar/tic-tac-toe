@@ -5,7 +5,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    background-color: #f4f4f9;
 }
 
 .title {
@@ -14,39 +14,87 @@ body {
     left: 50%; 
     transform: translateX(-50%); 
     z-index: 10; 
-    padding: 10px 20px;
-    background-color: lightblue; 
-    border: 2px solid #333; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+    padding: 15px 30px;
+    background-color: #6c63ff;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px; 
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); 
     text-align: center;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
 }
-
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
-    gap: 5px;
-    background-color: #444;
-    padding: 5px;
-    border: 5px solid #333;
-    border-radius: 10px;
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(3, 120px);
+    gap: 10px;
+    background-color: #ffffff;
+    padding: 15px;
+    border: 3px solid #6c63ff;
+    border-radius: 15px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
 }
 
 .cell {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
-    font-size: 2em;
+    background-color: #fffbfe;
+    font-size: 2.5em;
     font-weight: bold;
     cursor: pointer;
-    border: 2px solid #333;
+    border: 2px solid #c0c0c0;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.cell:hover {
+    background-color: #ffdde1;
+    border-color: #ff6f91;
+    transform: scale(1.1);
 }
 
 .cell.taken {
     pointer-events: none;
-    background-color: #ddd;
+    background-color: #f0f0f0;
+    color: #888;
+    border-color: #d0d0d0;
+}
+
+.cell.taken.X {
+    color: #ff5722;
+    font-size: 3em;
+}
+
+.cell.taken.O {
+    color: #2196f3;
+    font-size: 3em;
+}
+
+
+/*restart button*/
+
+.restart-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #6c63ff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.restart-btn:hover {
+    background-color: #574dcf;
+    transform: scale(1.05);
+}
+
+.restart-btn:active {
+    background-color: #463caa;
 }
